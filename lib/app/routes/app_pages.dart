@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:test_deep_link/app/data/auth_storage.dart';
 
 import '../modules/first_page/bindings/first_page_binding.dart';
 import '../modules/first_page/views/first_page_view.dart';
@@ -17,6 +18,10 @@ class AppPages {
   static const INITIAL = Routes.HOME;
 
   static final routes = [
+    GetPage(
+      name: _Paths.ROOT,
+      page: () => AuthStorage.isLoggedin ? const HomeView() : const LoginView(),
+    ),
     GetPage(
       name: _Paths.HOME,
       page: () => const HomeView(),
